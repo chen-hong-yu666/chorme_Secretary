@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>日常 AI 助手设置</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main class="layout">
+      <section class="intro">
+        <p class="eyebrow">Chrome 扩展</p>
+        <h1>日常 AI 助手设置</h1>
+        <p class="lead">连接 OpenAI 兼容接口后，在网页中选中文字，就能用悬浮工具条快速翻译、总结、解释、加粗或润色改写。</p>
+      </section>
+
+      <section class="card">
+        <form id="settings-form">
+          <label class="field">
+            <span>API 密钥</span>
+            <input id="apiKey" name="apiKey" type="password" placeholder="sk-..." autocomplete="off">
+          </label>
+
+          <label class="field">
+            <span>接口地址</span>
+            <input id="baseUrl" name="baseUrl" type="url" placeholder="https://api.openai.com/v1/chat/completions">
+          </label>
+
+          <label class="field">
+            <span>模型名称</span>
+            <input id="model" name="model" type="text" placeholder="gpt-4.1-mini">
+          </label>
+
+          <label class="field">
+            <span>系统提示词</span>
+            <textarea id="systemPrompt" name="systemPrompt" rows="5" placeholder="告诉 AI 应该如何处理网页文字"></textarea>
+          </label>
+
+          <label class="field">
+            <span>创造性</span>
+            <input id="temperature" name="temperature" type="number" min="0" max="2" step="0.1">
+          </label>
+
+          <div class="actions">
+            <button type="submit">保存设置</button>
+            <p id="status" class="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </section>
+
+      <section class="card notes-card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Notes</p>
+            <h2>加粗笔记</h2>
+          </div>
+          <button id="clear-notes" class="secondary-button" type="button">清空全部</button>
+        </div>
+
+        <section class="note-path note-destinations">
+          <div>
+            <strong>笔记地址</strong>
+            <p id="note-path-status">可以添加多个加粗笔记地址，并按需要暂停或启用。</p>
+          </div>
+          <div class="note-path-actions">
+            <button id="choose-note-folder" class="secondary-button" type="button">新增地址</button>
+            <button id="sync-notes-file" class="secondary-button" type="button">同步全部</button>
+          </div>
+          <div id="note-destinations-list" class="note-destinations-list" aria-live="polite"></div>
+        </section>
+
+        <div id="notes-list" class="notes-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

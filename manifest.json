@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "日常 AI 助手",
+  "version": "0.3.0",
+  "description": "选中网页文字后，用轻量悬浮工具条快速翻译、总结、解释、加粗或润色改写。",
+  "permissions": [
+    "contextMenus",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html",
+  "action": {
+    "default_title": "日常 AI 助手"
+  }
+}
